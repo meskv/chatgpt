@@ -34,27 +34,40 @@ const ChatList = ({ chats }) => {
           </a>
         </li>
       ))}
-
-      {/* <li>
-                <form action="#" method="GET" className="lg:hidden">
-                  <label htmlFor="mobile-search" className="sr-only">Search</label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <svg className="w-5 h-5 text-gray-100" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                      </svg>
-                    </div>
-                    <input type="text" name="email" id="mobile-search" className="bg-gray-50 border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-cyan-600 focus:ring-cyan-600 block w-full pl-10 p-2.5" placeholder="Search" />
-                  </div>
-                </form>
-              </li> 
-              */}
     </ol>
   )
 }
 
-const Sidebar = ({ toggleSidebar }) => {
+const ModelList = (props) => {
+  const { models, currentModel, setCurrentModel } = props
 
+  return (
+    <>
+      <label id="listbox-label" className="block text-sm font-medium leading-6 text-white">Select a Model</label>
+      <select
+        onChange={(e) => { setCurrentModel(e.target.value) }}
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      >
+        <option
+          className="bg-white text-gray-300"
+          value="text-davinci-003">
+          {currentModel}
+        </option>
+        {models.map((model, index) => (
+          <option
+            className="flex flex-col gap-2 text-gray-300"
+            key={index}
+            value={model.id}
+          >
+            {model.id}
+          </option>
+        ))}
+      </select>
+    </>
+  )
+}
+
+const Sidebar = ({ toggleSidebar, models, currentModel, setCurrentModel }) => {
   return (
     <aside id="sidebar" className={`fixed top-0 left-0 z-20 h-full  flex lg:flex flex-shrink-0 flex-col w-[17rem] transition-width duration-75`} aria-label="Sidebar">
       <div className="relative flex-1 flex flex-col min-h-0 bg-[#202123] pt-0">
@@ -69,7 +82,7 @@ const Sidebar = ({ toggleSidebar }) => {
             </a>
             <span data-state="closed">
               <a
-                className="flex p-3 gap-3 transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border border-white/20 hover:bg-gray-500/10 h-11 w-11 flex-shrink-0 items-center justify-center"
+                className="flex p-3 items-center gap-3 transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border bg-white dark:bg-gray-800 border-black/10 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700 h-11"
               >
                 <button onClick={toggleSidebar} >
                   {/* {toggleSidebar ? <BsLayoutSidebar /> : <CgUser />} */}
@@ -78,15 +91,13 @@ const Sidebar = ({ toggleSidebar }) => {
               </a>
             </span>
           </div>
+          <ModelList models={models} currentModel={currentModel} setCurrentModel={setCurrentModel} />
         </div>
 
         <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
           <div className="flex-1 px-3 bg-[#202123] divide-y space-y-1 flex flex-col justify-between">
             <ChatList chats={sidebarTopLinks} />
-
-
             <div className="space-y-2 pt-2 mt-2">
-
               {/* {sidebarBottomLinks.map((link, index) => (
                 <a href={link.url} key={index} className="text-base text-gray-300 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
                   <link.icon className="h-6 w-6" aria-hidden="true" />

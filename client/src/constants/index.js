@@ -88,7 +88,6 @@ const footerLeftLinks = [
     },
 ]
 
-
 export {
     sidebarTopLinks,
     sidebarBottomLinks,

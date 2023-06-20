@@ -1,17 +1,24 @@
 import React from "react";
 import { createBrowserRouter, Route, Routes, Navigate, RouterProvider } from "react-router-dom";
 
-import { NotFound } from "./pages";
-import Home from "./pages/Home/Home";
+import { Home, ChatGPT, NotFound } from "./pages";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Navigate to="/chatgpt" />
+  },
+  {
+    path: "/chatgpt",
     element: <Home />
 
   },
   {
-    path: "/*",
+    path: "/clone",
+    element: <ChatGPT />
+  },
+  {
+    path: "*",
     element: <NotFound />,
   }
 ])
