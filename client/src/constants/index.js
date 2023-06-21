@@ -1,6 +1,8 @@
 // Social Links Icons
 import { AiFillGithub, AiFillLinkedin, AiFillMail, AiOutlineTwitter } from "react-icons/ai";
 
+import { BsGlobe } from "react-icons/bs";
+
 // Sidebar Icons
 import { AiFillHtml5 } from "react-icons/ai";
 
@@ -41,6 +43,11 @@ const sidebarBottomLinks = [
 ]
 
 const socialLinks = [
+    {
+        name: "Portfolio",
+        url: "https://meskv.github.io/portfolio",
+        icon: BsGlobe,
+    },
     {
         name: "Github",
         url: "https://github.com/meskv",

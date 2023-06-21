@@ -2,14 +2,25 @@ import React from 'react'
 
 const ChatGPT = () => {
     return (
-        <div className="App flex bg-[#202c32] text-white absolute top-0 bottom-0 left-0 right-0 text-center ">
-            <aside className="sidemenu w-[260px] bg-back p-3">
-                <h1>Aside</h1>
-                <div className="p-3"></div>
-            </aside>
-            <section className='chat-box flex-1'>
+        <div className="flex">
+            {/* Sidebar */}
+            <div className="w-1/4 bg-gray-600 min-h-screen">
+                {/* Sidebar content */}
+            </div>
 
-            </section>
+            {/* Main content */}
+            <div className="flex-1 flex flex-col min-h-screen">
+                <div className="overflow-auto h-4/5 bg-gray-800">
+                    {/* Main content scrollable area */}
+                    {/* Add your scrollable content here */}
+
+                </div>
+
+                <div className="bg-red-300 h-1/5">
+                    {/* Fixed bottom div */}
+                    {/* Add your fixed bottom content here */}
+                </div>
+            </div>
         </div>
     )
 }

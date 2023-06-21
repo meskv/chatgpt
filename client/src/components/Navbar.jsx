@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar, showSidebar }) => {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start">
                         <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" className="lg:hidden mr-2 cursor-pointer p-2  rounded">
-                            <BsLayoutSidebar onClick={toggleSidebar} className="text-gray-200" />
+                            <BsLayoutSidebar onClick={toggleSidebar} className="text-gray-800" />
                         </button>
                         {/* <a href="/" className="text-xl font-bold flex items-center justify-center lg:ml-2.5">
                             <img src={openaiImg} alt={"ChatGPT logo"} className="w-6 h-6 rounded-full mr-2" />

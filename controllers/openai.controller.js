@@ -34,7 +34,7 @@ const promptController = async (req, res) => {
             // model: `${currentModel}`, // "text-davinci-003"
             model: "text-davinci-003",
             prompt: `${message}`,
-            max_tokens: 50,
+            max_tokens: 200,
             temperature: 0.3,
         });
 
