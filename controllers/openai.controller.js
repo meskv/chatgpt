@@ -3,8 +3,10 @@ const { Configuration, OpenAIApi } = require("openai");
 
 dotenv.config();
 
+const { OPENAI_API_KEY } = require('../config/keys');
+
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -28,7 +30,7 @@ const promptController = async (req, res) => {
     try {
         const { message, currentModel } = req.body;
         console.log("currentModel: ", currentModel),
-        console.log("message: ", message);
+            console.log("message: ", message);
 
         const response = await openai.createCompletion({
             // model: `${currentModel}`, // "text-davinci-003"

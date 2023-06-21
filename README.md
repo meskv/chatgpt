@@ -29,3 +29,7 @@ DB_NAME: The name of the database in the MongoDB database.
 cd client
 npm run dev -- --host
 ```
+
+## Deployment on Vercel
+https://www.youtube.com/watch?v=fTIWf1PpBl8
+

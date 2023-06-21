@@ -11,8 +11,8 @@ dotenv.config();
 // Initialize the Express application
 const app = express();
 
-// Initialize MongoDB connection
-// require('./helpers/init_mongodb');
+// Import environment variables
+const { PORT } = require('./config/keys');
 
 // Configure CORS options
 const corsOptions = {};
@@ -48,8 +48,17 @@ app.use((err, req, res, next) => {
     });
 });
 
+if (process.env.NODE_ENV === 'production') {
+    const path = require('path');
+
+    // Serve static files from the React frontend app
+    app.get('/', (req, res) => {
+        app.use(express.static(path.resolve(__dirname, 'client', 'build')));
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 // Start the server
-const PORT = process.env.PORT || 5000
+// const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
