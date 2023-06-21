@@ -11,8 +11,6 @@ dotenv.config();
 // Initialize the Express application
 const app = express();
 
-// Import environment variables
-const { PORT } = require('./config/keys');
 
 // Configure CORS options
 const corsOptions = {};
@@ -59,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Start the server
-// const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
